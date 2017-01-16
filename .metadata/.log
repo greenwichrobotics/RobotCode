@@ -559,3 +559,12 @@ java.io.FileNotFoundException: C:\Users\tyler\Documents\GitHub\RobotCode\.metada
 
 !ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2017-01-16 11:51:41.549
 !MESSAGE [edu.wpi.first.wpilib.plugins.core.wizards.Tag@7cb7004, edu.wpi.first.wpilib.plugins.core.wizards.Tag@2e99f113, edu.wpi.first.wpilib.plugins.core.wizards.Tag@10e555e0, edu.wpi.first.wpilib.plugins.core.wizards.Tag@2858d94d, edu.wpi.first.wpilib.plugins.core.wizards.Tag@74cfd712, edu.wpi.first.wpilib.plugins.core.wizards.Tag@15bfa1f1, edu.wpi.first.wpilib.plugins.core.wizards.Tag@2fcfbcf3, edu.wpi.first.wpilib.plugins.core.wizards.Tag@41339af6, edu.wpi.first.wpilib.plugins.core.wizards.Tag@4b4ea285, edu.wpi.first.wpilib.plugins.core.wizards.Tag@23163234, edu.wpi.first.wpilib.plugins.core.wizards.Tag@716c2a81, edu.wpi.first.wpilib.plugins.core.wizards.Tag@2c55fa70, edu.wpi.first.wpilib.plugins.core.wizards.Tag@12312ff5, edu.wpi.first.wpilib.plugins.core.wizards.Tag@a43815, edu.wpi.first.wpilib.plugins.core.wizards.Tag@100c22a2]
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 10 2017-01-16 12:10:55.406
+!MESSAGE Updating the index from remote ‘https://www.eclipse.org/downloads/download.php?r=1&file=/technology/epp/logging/problems.zip’ failed with exception: org.apache.lucene.index.IndexNotFoundException: no segments* file found in org.apache.lucene.store.MMapDirectory@C:\Users\17cabernathy\AppData\Local\Temp\1484586655232-0 lockFactory=org.apache.lucene.store.NativeFSLockFactory@3f769959: files: [] ; version: 2.0.3.v20160905-1331
+!STACK 0
+org.eclipse.epp.logging.aeri.core.util.Logs$LogTraceException
+	at org.eclipse.epp.logging.aeri.core.util.Logs$LogTraceException.newTrace(Logs.java:387)
+	at org.eclipse.epp.logging.aeri.core.util.Logs.log(Logs.java:134)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerProblemsHistory$UpdateIndexJob.run(ServerProblemsHistory.java:319)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
