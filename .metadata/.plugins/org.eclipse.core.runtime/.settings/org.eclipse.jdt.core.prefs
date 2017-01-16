@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+org.eclipse.jdt.core.classpathVariable.JRE_LIB=C\:/Program Files/Java/jdk1.8.0_112/jre/lib/rt.jar
+org.eclipse.jdt.core.classpathVariable.JRE_SRC=C\:/Program Files/Java/jdk1.8.0_112/src.zip
+org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=
 org.eclipse.jdt.core.classpathVariable.USERLIBS_DIR=C\:/Users/tyler/wpilib/user/java/lib
 org.eclipse.jdt.core.classpathVariable.cscore=C\:/Users/tyler/wpilib/java/current/lib/cscore.jar
 org.eclipse.jdt.core.classpathVariable.cscore.sources=C\:/Users/tyler/wpilib/java/current/lib/cscore-sources.jar

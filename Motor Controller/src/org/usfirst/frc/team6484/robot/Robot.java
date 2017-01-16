@@ -22,6 +22,8 @@ public class Robot extends SampleRobot {
 	private SpeedController motor1 = new Talon(0); // initialize the motor as a
 													// Talon on channel 0
 	private SpeedController motor2 = new Talon(1);
+	private SpeedController motor3 = new Talon(2);
+	private SpeedController motor4 = new Talon(3);
 	private Joystick stick = new Joystick(0); // initialize the joystick on port
 												// 0
 
@@ -40,8 +42,27 @@ public class Robot extends SampleRobot {
 			// Set the motor's output.
 			// This takes a number from -1 (100% speed in reverse) to +1 (100%
 			// speed going forward)
-			motor1.set(-1 * stick.getY());
-			motor2.set(-1 * stick.getY());
+//			motor1.set(-1 * stick.getY());
+//			motor2.set(-1 * stick.getY());
+//			motor3.set(stick.getY());
+//			motor4.set(stick.getY());
+			if (stick.getX() > .2 || stick.getX() < -.2){
+				motor1.set(.5 * stick.getX());
+				motor2.set(.5 * stick.getX());
+				motor3.set(.5 * stick.getX());
+				motor4.set(.5 * stick.getX());
+			}else if (stick.getX() > -.2 && stick.getX() < .2){
+				motor1.set(0);
+				motor2.set(0);
+				motor3.set(0);
+				motor4.set(0);
+			}
+//			motor1.set(.2 * stick.getX());
+//			motor2.set(.2 * stick.getX());
+//			motor3.set(.2 * stick.getX());
+//			motor4.set(.2 * stick.getX());
+			
+			
 
 			Timer.delay(kUpdatePeriod); // wait 5ms to the next update
 		}

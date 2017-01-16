@@ -1,0 +1,12 @@
+package org.usfirst.frc.team6484.robot;
+
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.SampleRobot;
+
+public class ArcadeDrive extends SampleRobot{
+	@Override
+	public void arcadeDrive(GenericHID stick, boolean squaredInputs) {
+	    // simply call the full-featured arcadeDrive with the appropriate values
+	    arcadeDrive(stick.getY(), stick.getY(), squaredInputs);
+	  }
+}

@@ -1,6 +1,8 @@
 package org.usfirst.frc.team6484.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SampleRobot;
@@ -19,19 +21,16 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class Robot extends SampleRobot {
 
-	private SpeedController motor = new Talon(0); // initialize the motor as a
-													// Talon on channel 0
-	private Joystick stick = new Joystick(0); // initialize the joystick on port
-												// 0
+	RobotDrive myDrive;
+	Joystick driveStick;
 
-	private final double kUpdatePeriod = 0.005; // update every 0.005 seconds/5
-												// milliseconds (200Hz)
-
-	public Robot() {
+	public void robotInit() {
+		myDrive = new RobotDrive(0,1,2,3);
+		driveStick = new Joystick(0);
 	}
 
 	/**
-	 * Runs the motor from a joystick.
+	 * Runs the motor from a joystick. 
 	 */
 	@Override
 	public void operatorControl() {
@@ -39,9 +38,11 @@ public class Robot extends SampleRobot {
 			// Set the motor's output.
 			// This takes a number from -1 (100% speed in reverse) to +1 (100%
 			// speed going forward)
-			motor.set(stick.getY());
+			
+			
+			myDrive.arcadeDrive(driveStick);
 
-			Timer.delay(kUpdatePeriod); // wait 5ms to the next update
+			Timer.delay(0.01); // wait 5ms to the next update
 		}
 	}
 }
