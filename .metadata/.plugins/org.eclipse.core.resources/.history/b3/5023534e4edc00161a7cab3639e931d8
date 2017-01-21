@@ -1,0 +1,11 @@
+package org.usfirst.frc.team6484.robot;
+
+import com.autodesk.bxd.*;
+public class Emulator {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		EmulatorControl.start(9999,Robot.class);
+	}
+
+}

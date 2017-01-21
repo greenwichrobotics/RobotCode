@@ -1,12 +1,19 @@
 package org.usfirst.frc.team6484.robot;
 
+
+
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.RobotDrive.MotorType;
+//import edu.wpi.first.wpilibj.ArcadeDrive;
+//import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SampleRobot;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team6484.robot.ArcadeDrive;
+import org.usfirst.frc.team6484.robot.ArcadeDrive.MotorType;
 
 /**
  * This sample program shows how to control a motor using a joystick. In the
@@ -21,12 +28,15 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class Robot extends SampleRobot {
 
-	RobotDrive myDrive;
+	ArcadeDrive myDrive;
 	Joystick driveStick;
 
 	public void robotInit() {
-		myDrive = new RobotDrive(0,1,2,3);
+		myDrive = new ArcadeDrive(1,0,3,2);
 		driveStick = new Joystick(0);
+		
+//		 SmartDashboard.putNumber("DB/Sting 0", 0);
+//		CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	/**
@@ -40,9 +50,13 @@ public class Robot extends SampleRobot {
 			// speed going forward)
 			
 			
-			myDrive.arcadeDrive(driveStick);
-
+			myDrive.arcadeDrive(driveStick,  1, driveStick, 0, driveStick, 3, true);
 			Timer.delay(0.01); // wait 5ms to the next update
 		}
 	}
+	
+	
+	
 }
+
+

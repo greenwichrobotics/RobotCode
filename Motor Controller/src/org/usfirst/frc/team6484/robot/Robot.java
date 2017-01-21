@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6484.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SampleRobot;
@@ -19,11 +20,7 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class Robot extends SampleRobot {
 
-	private SpeedController motor1 = new Talon(0); // initialize the motor as a
-													// Talon on channel 0
-	private SpeedController motor2 = new Talon(1);
-	private SpeedController motor3 = new Talon(2);
-	private SpeedController motor4 = new Talon(3);
+	myDrive = new RobotDrive(0,1,2,3);
 	private Joystick stick = new Joystick(0); // initialize the joystick on port
 												// 0
 

@@ -1,0 +1,6 @@
+import com.autodesk.bxd.*;
+public class Main {
+public static void main(String[] args){
+	EmulatorControl.start(9999, RobotTemplate.class);
+}
+}
