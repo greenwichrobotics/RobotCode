@@ -1,19 +1,11 @@
 package org.usfirst.frc.team6484.robot;
 
-
-
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
-//import edu.wpi.first.wpilibj.ArcadeDrive;
-//import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SampleRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team6484.robot.ArcadeDrive;
-import org.usfirst.frc.team6484.robot.ArcadeDrive.MotorType;
 
 /**
  * This sample program shows how to control a motor using a joystick. In the
@@ -28,21 +20,19 @@ import org.usfirst.frc.team6484.robot.ArcadeDrive.MotorType;
  */
 public class Robot extends SampleRobot {
 
-	ArcadeDrive myDrive;
-	Joystick driveStick;
-	SpeedController motor;
+	private SpeedController motor = new Talon(0); // initialize the motor as a
+													// Talon on channel 0
+	private Joystick stick = new Joystick(0); // initialize the joystick on port
+												// 0
 
-	public void robotInit() {
-		myDrive = new ArcadeDrive(1,0,3,2);
-		driveStick = new Joystick(0);
-		motor = new Talon(4);
-		
-//		 SmartDashboard.putNumber("DB/Sting 0", 0);
-//		CameraServer.getInstance().startAutomaticCapture();
+	private final double kUpdatePeriod = 0.005; // update every 0.005 seconds/5
+												// milliseconds (200Hz)
+
+	public Robot() {
 	}
 
 	/**
-	 * Runs the motor from a joystick. 
+	 * Runs the motor from a joystick.
 	 */
 	@Override
 	public void operatorControl() {
@@ -50,17 +40,10 @@ public class Robot extends SampleRobot {
 			// Set the motor's output.
 			// This takes a number from -1 (100% speed in reverse) to +1 (100%
 			// speed going forward)
-			
-			
-			myDrive.arcadeDrive(driveStick,  1, driveStick, 0, true);
-			motor.set(-1* (-1 + driveStick.getRawAxis(3)) / 2);
-			SmartDashboard.putString("DB/String 7", "Shooter: " + Double.toString(-1* (-1 + driveStick.getRawAxis(3)) / 2));
-			Timer.delay(0.01); // wait 5ms to the next update
+			motor.set(-1* stick.getRawAxis(3));
+			SmartDashboard.putString("DB/String 7", "Shooter: " + Double.toString(-1* stick.getRawAxis(3)));
+
+			Timer.delay(kUpdatePeriod); // wait 5ms to the next update
 		}
 	}
-	
-	
-	
 }
-
-
