@@ -42,6 +42,8 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		
+		
 		CameraServer.getInstance().startAutomaticCapture();
 		System.out.println("hello");
 	}
@@ -104,10 +106,10 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-//		DriveSystem ds = new DriveSystem();
-//		ds.initDefaultCommand();
-		ds = new DriveSystem();
-		ds.initDefaultCommand();
+		if (ds == null){
+			ds = new DriveSystem();
+			ds.initDefaultCommand();
+		}
 		
 	}
 

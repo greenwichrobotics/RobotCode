@@ -51,10 +51,10 @@ public class Robot extends SampleRobot {
 			// This takes a number from -1 (100% speed in reverse) to +1 (100%
 			// speed going forward)
 			
-			
+			double motorSpeed = (-1 * ((-1 + driveStick.getRawAxis(3)) / 2));
 			myDrive.arcadeDrive(driveStick,  1, driveStick, 0, true);
-			motor.set(-1* (-1 + driveStick.getRawAxis(3)) / 2);
-			SmartDashboard.putString("DB/String 7", "Shooter: " + Double.toString(-1* (-1 + driveStick.getRawAxis(3)) / 2));
+			motor.set(motorSpeed);
+			SmartDashboard.putString("DB/String 7", "Shooter: " + Double.toString(motorSpeed));
 			Timer.delay(0.01); // wait 5ms to the next update
 		}
 	}
