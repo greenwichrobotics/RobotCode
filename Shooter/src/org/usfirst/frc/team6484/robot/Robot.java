@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends SampleRobot {
 
-	private SpeedController motor = new Talon(0); // initialize the motor as a
+	private SpeedController motor = new Talon(4); // initialize the motor as a
 													// Talon on channel 0
 	private Joystick stick = new Joystick(0); // initialize the joystick on port
 												// 0
