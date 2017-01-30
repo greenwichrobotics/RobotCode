@@ -15,7 +15,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 //		CameraServer.getInstance().startAutomaticCapture();
-		CameraServer.getInstance().addServer("raspberrypi.frc-robot.local", 1180);
+//		CameraServer.getInstance().addServer("raspberrypi.frc-robot.local", 1180);
 	}
 
 }
