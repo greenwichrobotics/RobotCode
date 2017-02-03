@@ -2,7 +2,6 @@ package org.usfirst.frc.team6484.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
-
 import org.usfirst.frc.team6484.robot.commands.ExampleCommand;
 
 /**
@@ -15,10 +14,10 @@ public class OI {
 	//// joystick.
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
-	 public Joystick driveStick;
+	 public static Joystick driveStick;
 	 
 	 public OI(){
-		 driveStick = new Joystick(0);
+		 driveStick = new Joystick(RobotMap.joystickPort0);
 	 }
 	// Button button = new JoystickButton(stick, buttonNumber);
 

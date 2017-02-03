@@ -11,7 +11,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team6484.robot.commands.ExampleCommand;
+import org.usfirst.frc.team6484.robot.commands.*;
+import org.usfirst.frc.team6484.robot.commands.teleopDrive;
 import org.usfirst.frc.team6484.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team6484.robot.subsystems.ExampleSubsystem;
 
@@ -25,12 +26,12 @@ import org.usfirst.frc.team6484.robot.subsystems.ExampleSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static final DriveSystem driveSystem = new DriveSystem();
 	public static OI oi;
-	public DriveSystem ds;
-	
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+	teleopDrive myTeleopDrive; 
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -42,9 +43,10 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		myTeleopDrive = new teleopDrive();
 		
 		
-		CameraServer.getInstance().startAutomaticCapture();
+//		CameraServer.getInstance().startAutomaticCapture();
 		System.out.println("hello");
 	}
 
@@ -106,10 +108,8 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		if (ds == null){
-			ds = new DriveSystem();
-			ds.initDefaultCommand();
-		}
+		if (myTeleopDrive != null)
+			myTeleopDrive.start();
 		
 	}
 
@@ -120,9 +120,6 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		
-		ds.startDrive();
-//		DriveSystem ds = new DriveSystem();
-//		ds.initDefaultCommand();
 	}
 
 	/**

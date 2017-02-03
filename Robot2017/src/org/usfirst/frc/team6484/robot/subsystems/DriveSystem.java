@@ -1,34 +1,30 @@
+// ******************************************************
+// Description: Controls the motors used for driving.
+// Year: 2017
 package org.usfirst.frc.team6484.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Joystick;
-import org.usfirst.frc.team6484.robot.ArcadeDrive;
+import edu.wpi.first.wpilibj.RobotDrive;
 import org.usfirst.frc.team6484.robot.OI;
+import org.usfirst.frc.team6484.robot.RobotMap;
+import org.usfirst.frc.team6484.robot.commands.teleopDrive;
 
-public class DriveSystem  {
+public class DriveSystem extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-//	public RobotDrive myDrive = new RobotDrive(0,1,2,3);
-//	public Joystick driveStick = new Joystick(0); 
-//	public Joystick driveStick;
-	public ArcadeDrive myDrive;
-	public static OI oi;
+	public static RobotDrive myDrive;
+	private static OI oi = new OI();
+	
 	
 	public void initDefaultCommand() {
-		oi = new OI();
-		
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		myDrive = new ArcadeDrive(0,1,2,3);
-//		driveStick = new Joystick(0); 
-		
+		setDefaultCommand(new teleopDrive());
 	}
-	
-//	public void initDrive(){
-//	
-//	}
-	public void startDrive(){
-		myDrive.arcadeDrive(oi.driveStick,  1, oi.driveStick, 0, true);
+		
+	public static void Drive(double moveValue, double turnValue){
+		myDrive.arcadeDrive(moveValue, turnValue, true);
 	}
 	
 }
