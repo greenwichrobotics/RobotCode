@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SampleRobot;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 
@@ -22,8 +23,12 @@ import edu.wpi.first.wpilibj.XboxController;
 public class Robot extends SampleRobot {
 
 	 // initialize the motor as a
-	Compressor c = new Compressor(0);
-	DoubleSolenoid exampleDouble = new DoubleSolenoid(0, 1);
+//	Compressor c = new Compressor(0);
+//	DoubleSolenoid exampleDouble = new DoubleSolenoid(0, 1);
+	Solenoid light1 = new Solenoid(0);
+	Solenoid light2 = new Solenoid(1);
+	boolean light1On = false;
+	boolean light2On = false;
 													// Talon on channel 0
 	private XboxController stick = new XboxController(1); // initialize the joystick on port
 												// 0
@@ -32,7 +37,7 @@ public class Robot extends SampleRobot {
 												// milliseconds (200Hz)
 
 	public Robot() {
-		c.setClosedLoopControl(false);
+//		c.setClosedLoopControl(false);
 	}
 
 	/**                                                                                                                                        
@@ -42,17 +47,22 @@ public class Robot extends SampleRobot {
 	public void operatorControl() {
 		while (isOperatorControl() && isEnabled()) {
 			
-			if (stick.getStartButton())
-				c.setClosedLoopControl(true);
-			else if (stick.getBackButton())
-				c.setClosedLoopControl(false);
+//			if (stick.getStartButton())
+//				c.setClosedLoopControl(true);
+//			else if (stick.getBackButton())
+//				c.setClosedLoopControl(false);
 			
-			if (stick.getAButton())
-				exampleDouble.set(DoubleSolenoid.Value.kForward);
-			else if (stick.getBButton())
-				exampleDouble.set(DoubleSolenoid.Value.kReverse);
-			else
-				exampleDouble.set(DoubleSolenoid.Value.kOff);
+			if (stick.getAButton()){
+				light1On = !light1On;
+				light1.set(light1On);
+				Timer.delay(.5);
+				
+			}
+			if (stick.getBButton()){
+				light2On = !light2On;
+				light2.set(light2On);
+				Timer.delay(.5);
+			}
 			
 
 			Timer.delay(kUpdatePeriod); // wait 5ms to the next update
